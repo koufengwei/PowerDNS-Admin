@@ -26,7 +26,7 @@
                         添加记录&nbsp;<i class="fa fa-plus"></i>
                     </button>
                     <button type="button" class="btn btn-flat btn-primary pull-right button_apply_changes" id="{{ domain.name }}" value="{{ domain.serial }}">
-                        应用变更&nbsp;<i class="fa fa-floppy-o"></i>
+                        保存变更&nbsp;<i class="fa fa-floppy-o"></i>
                     </button>
                     {% else %}
                     <button type="button" class="btn btn-flat btn-primary pull-left button_update_from_master" id="{{ domain.name }}">
@@ -72,14 +72,14 @@
                                 {% if domain.type != 'Slave' %}
                                     <td width="6%">
                                         {% if record.is_allowed_edit() %}
-                                            <button type="button" class="btn btn-flat btn-warning button_edit">Edit&nbsp;<i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-flat btn-warning button_edit">编辑&nbsp;<i class="fa fa-edit"></i></button>
                                         {% else %}
                                             <button type="button" class="btn btn-flat btn-warning"">&nbsp;&nbsp;<i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;</button>
                                         {% endif %}
                                     </td>
                                     <td width="6%">
                                         {% if record.is_allowed_delete() %}
-                                            <button type="button" class="btn btn-flat btn-danger button_delete">Delete&nbsp;<i class="fa fa-trash"></i></button>
+                                            <button type="button" class="btn btn-flat btn-danger button_delete">删除&nbsp;<i class="fa fa-trash"></i></button>
                                         {% endif %}
                                     </td>
                                 {% else %}
@@ -161,7 +161,7 @@
         var table = $("#tbl_records").DataTable();
         var record = $(this).prop('id');
         var nRow = $(this).parents('tr')[0];
-        var info = "Are you sure you want to delete " + record + "?";
+        var info = "确定要删除 " + record + "?";
         modal.find('.modal-body p').text(info);
         modal.modal('show');
 
@@ -208,7 +208,7 @@
     $(document.body).on("click",".button_apply_changes", function() {
         if (nNew || nEditing) {
             var modal = $("#modal_error");
-            modal.find('.modal-body p').text("Previous record not saved. Please save it before applying the changes.");
+            modal.find('.modal-body p').text("前一条记录没有保存,请在应用变更之前先保存");
             modal.modal('show');
             return;
         }
@@ -217,7 +217,7 @@
         var table = $("#tbl_records").DataTable();
         var domain = $(this).prop('id');
         var serial = $(".button_apply_changes").val();
-        var info = "Are you sure you want to apply your changes?";
+        var info = "确定要保存变更吗?";
         modal.find('.modal-body p').text(info);
 
         // following unbind("click") is to avoid multiple times execution
@@ -234,7 +234,7 @@
     $(document.body).on("click", ".button_add_record", function (e) {
             if (nNew || nEditing) {
                 var modal = $("#modal_error");
-                modal.find('.modal-body p').text("Previous record not saved. Please save it before adding more record.");
+                modal.find('.modal-body p').text("前一条记录没有保存,请在添加新记录之前先保存");
                 modal.modal('show');
                 return;
             }
@@ -287,20 +287,20 @@
         if (record_type == "CAA") {
             var modal = $("#modal_custom_record");
             if (record_data.val() == "") {
-                var form = "    <label for=\"caa_flag\">CAA Flag</label> \
+                var form = "    <label for=\"caa_flag\">CAA 标示</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"caa_flag\" id=\"caa_flag\" placeholder=\"0\"> \
-                                <label for=\"caa_tag\">CAA Tag</label> \
+                                <label for=\"caa_tag\">CAA 标签</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"caa_tag\" id=\"caa_tag\" placeholder=\"issue\"> \
-                                <label for=\"caa_value\">CAA Value</label> \
+                                <label for=\"caa_value\">CAA 值</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"caa_value\" id=\"caa_value\" placeholder=\"eg. letsencrypt.org\"> \
                             ";
             } else {
                 var parts = record_data.val().split(" ");
-                var form = "    <label for=\"caa_flag\">CAA Flag</label> \
+                var form = "    <label for=\"caa_flag\">CAA 标示</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"caa_flag\" id=\"caa_flag\" placeholder=\"0\" value=\"" + parts[0] + "\"> \
-                                <label for=\"caa_tag\">CAA Tag</label> \
+                                <label for=\"caa_tag\">CAA 标签</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"caa_tag\" id=\"caa_tag\" placeholder=\"issue\" value=\"" + parts[1] + "\"> \
-                                <label for=\"caa_value\">CAA Value</label> \
+                                <label for=\"caa_value\">CAA 值</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"caa_value\" id=\"caa_value\" placeholder=\"eg. letsencrypt.org\" value=\"" + parts[2] + "\"> \
                             ";
             }
@@ -317,17 +317,17 @@
         } else if (record_type == "MX") {
             var modal = $("#modal_custom_record");
             if (record_data.val() == "") {
-                var form = "    <label for=\"mx_priority\">MX Priority</label> \
-                                <input type=\"text\" class=\"form-control\" name=\"mx_priority\" id=\"mx_priority\" placeholder=\"eg. 10\"> \
-                                <label for=\"mx_server\">MX Server</label> \
-                                <input type=\"text\" class=\"form-control\" name=\"mx_server\" id=\"mx_server\" placeholder=\"eg. postfix.example.com\"> \
+                var form = "    <label for=\"mx_priority\">MX 优先级</label> \
+                                <input type=\"text\" class=\"form-control\" name=\"mx_priority\" id=\"mx_priority\" placeholder=\"例: 10\"> \
+                                <label for=\"mx_server\">MX 服务器</label> \
+                                <input type=\"text\" class=\"form-control\" name=\"mx_server\" id=\"mx_server\" placeholder=\"例: postfix.example.com\"> \
                             ";
             } else {
                 var parts = record_data.val().split(" ");
-                var form = "    <label for=\"mx_priority\">MX Priority</label> \
-                                <input type=\"text\" class=\"form-control\" name=\"mx_priority\" id=\"mx_priority\" placeholder=\"eg. 10\" value=\"" + parts[0] + "\"> \
-                                <label for=\"mx_server\">MX Server</label> \
-                                <input type=\"text\" class=\"form-control\" name=\"mx_server\" id=\"mx_server\" placeholder=\"eg. postfix.example.com\" value=\"" + parts[1] + "\"> \
+                var form = "    <label for=\"mx_priority\">MX 优先级</label> \
+                                <input type=\"text\" class=\"form-control\" name=\"mx_priority\" id=\"mx_priority\" placeholder=\"例: 10\" value=\"" + parts[0] + "\"> \
+                                <label for=\"mx_server\">MX 服务器</label> \
+                                <input type=\"text\" class=\"form-control\" name=\"mx_server\" id=\"mx_server\" placeholder=\"例: postfix.example.com\" value=\"" + parts[1] + "\"> \
                             ";
             }
             modal.find('.modal-body p').html(form);
@@ -345,24 +345,24 @@
         } else if (record_type == "SRV") {
             var modal = $("#modal_custom_record");
             if (record_data.val() == "") {
-                var form = "    <label for=\"srv_priority\">SRV Priority</label> \
+                var form = "    <label for=\"srv_priority\">SRV 优先级</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"srv_priority\" id=\"srv_priority\" placeholder=\"0\"> \
-                                <label for=\"srv_weight\">SRV Weight</label> \
+                                <label for=\"srv_weight\">SRV 权重</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"srv_weight\" id=\"srv_weight\" placeholder=\"10\"> \
-                                <label for=\"srv_port\">SRV Port</label> \
+                                <label for=\"srv_port\">SRV 端口</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"srv_port\" id=\"srv_port\" placeholder=\"5060\"> \
-                                <label for=\"srv_target\">SRV Target</label> \
+                                <label for=\"srv_target\">SRV 目标</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"srv_target\" id=\"srv_target\" placeholder=\"sip.example.com\"> \
                             ";
             } else {
                 var parts = record_data.val().split(" ");
-                var form = "    <label for=\"srv_priority\">SRV Priority</label> \
+                var form = "    <label for=\"srv_priority\">SRV 优先级</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"srv_priority\" id=\"srv_priority\" placeholder=\"0\" value=\"" + parts[0] + "\"> \
-                                <label for=\"srv_weight\">SRV Weight</label> \
+                                <label for=\"srv_weight\">SRV 权重</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"srv_weight\" id=\"srv_weight\" placeholder=\"10\" value=\"" + parts[1] + "\"> \
-                                <label for=\"srv_port\">SRV Port</label> \
+                                <label for=\"srv_port\">SRV 端口</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"srv_port\" id=\"srv_port\" placeholder=\"5060\" value=\"" + parts[2] + "\"> \
-                                <label for=\"srv_target\">SRV Target</label> \
+                                <label for=\"srv_target\">SRV 目标</label> \
                                 <input type=\"text\" class=\"form-control\" name=\"srv_target\" id=\"srv_target\" placeholder=\"sip.example.com\" value=\"" + parts[3] + "\"> \
                 ";
             }
@@ -487,7 +487,7 @@
             var lua_type = record_data.val().split(" ")[0];
             var lua_data = record_data.val().substr(record_data.val().indexOf(" ") + 1).replace(/"/g, '&quot;');
             var modal = $("#modal_custom_record");
-            var form = "    <label for=\"lua_type\">Lua Record Type</label> \
+            var form = "    <label for=\"lua_type\">Lua 记录类型</label> \
                             <input type=\"text\" class=\"form-control\" name=\"lua_type\" id=\"lua_type\" placeholder=\"Initial query type. Example: A, CNAME or PTR \" value=\"" + lua_type + "\"> \
                             <label for=\"lua_record\">Lua Record Data</label> \
                             <textarea style=\"min-width: 100%;color: #333;\" placeholder=\"Your LUA snippet\" rows=\"5\" id=\"lua_record\" name=\"lua_record\">" + lua_data + "</textarea> \
@@ -518,15 +518,15 @@
                     aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Confirmation</h4>
+                <h4 class="modal-title">确认</h4>
             </div>
             <div class="modal-body">
                 <p></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-flat btn-default pull-left" id="button_delete_cancel"
-                    data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-flat btn-danger" id="button_delete_confirm">Delete</button>
+                    data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-flat btn-danger" id="button_delete_confirm">删除</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -541,7 +541,7 @@
                     aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Confirmation</h4>
+                <h4 class="modal-title">确认</h4>
             </div>
             <div class="modal-body">
                 <p></p>
@@ -549,7 +549,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-flat btn-default pull-left"
                     data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-flat btn-primary" id="button_apply_confirm">Apply</button>
+                <button type="button" class="btn btn-flat btn-primary" id="button_apply_confirm">应用</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -564,13 +564,13 @@
                     aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Custom Record</h4>
+                <h4 class="modal-title">自定义记录</h4>
             </div>
             <div class="modal-body">
                 <p></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-flat btn-primary" id="button_save">Save</button>
+                <button type="button" class="btn btn-flat btn-primary" id="button_save">保存</button>
             </div>
         </div>
         <!-- /.modal-content -->
