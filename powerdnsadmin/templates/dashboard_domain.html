@@ -4,9 +4,9 @@
 
 {% macro dnssec(domain) %}
   {% if domain.dnssec %}
-  <td><span style="cursor:pointer" class="label label-success button_dnssec" id="{{ domain.name }}"><i class="fa fa-lock"></i>&nbsp;Enabled</span></td>
+  <td><span style="cursor:pointer" class="label label-success button_dnssec" id="{{ domain.name }}"><i class="fa fa-lock"></i>&nbsp;打开</span></td>
   {% else %}
-  <td><span style="cursor:pointer" class="label label-primary button_dnssec" id="{{ domain.name }}"><i class="fa fa-unlock-alt"></i>&nbsp;Disabled</span></td>
+  <td><span style="cursor:pointer" class="label label-primary button_dnssec" id="{{ domain.name }}"><i class="fa fa-unlock-alt"></i>&nbsp;关闭</span></td>
   {% endif %}
 {% endmacro %}
 
@@ -32,19 +32,19 @@
   {% if current_user.role.name in ['Administrator', 'Operator'] %}
     <td width="25%">
       <button type="button" class="btn btn-flat btn-success button_template" id="{{ domain.name }}">
-        Template&nbsp;<i class="fa fa-clone"></i>
+        模板&nbsp;<i class="fa fa-clone"></i>
       </button>
       <button type="button" class="btn btn-flat btn-success" onclick="window.location.href='{{ url_for('domain.domain', domain_name=domain.name) }}'">
-        Manage&nbsp;<i class="fa fa-cog"></i>
+        管理&nbsp;<i class="fa fa-cog"></i>
       </button>
       <button type="button" class="btn btn-flat btn-danger" onclick="window.location.href='{{ url_for('domain.setting', domain_name=domain.name) }}'">
-        Admin&nbsp;<i class="fa fa-cog"></i>
+        管理员&nbsp;<i class="fa fa-cog"></i>
       </button>
     </td>
     {% else %}
     <td width="6%">
       <button type="button" class="btn btn-flat btn-success" onclick="window.location.href='{{ url_for('domain.domain', domain_name=domain.name) }}'">
-        Manage&nbsp;<i class="fa fa-cog"></i>
+        管理&nbsp;<i class="fa fa-cog"></i>
       </button>
     </td>
   {% endif %}

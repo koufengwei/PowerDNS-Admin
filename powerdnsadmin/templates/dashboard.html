@@ -143,9 +143,9 @@
                             <thead>
                             <tr>
                               <th>名称</th>
-                              <th>DNSSEC</th>
+                              <th>是否开启DNSSEC</th>
                               <th>类型</th>
-                              <th>Serial</th>
+                              <th>序号</th>
                               <th>Master</th>
                               <th>账户</th>
                               <th {% if current_user.role.name not in ['Administrator','Operator'] %}width="6%"{% else %}width="25%"{% endif %}>操作</th>
@@ -239,10 +239,10 @@
     $(document.body).on("click", ".button_template", function (e) {
         var modal = $("#modal_template");
         var domain = $(this).prop('id');
-        var form = "    <label for=\"template_name\">Template name</label> \
-                        <input type=\"text\" class=\"form-control\" name=\"template_name\" id=\"template_name\" placeholder=\"Enter a valid template name (required)\"> \
-                        <label for=\"template_description\">Template description</label> \
-                        <input type=\"text\" class=\"form-control\" name=\"template_description\" id=\"template_description\" placeholder=\"Enter a template description (optional)\"> \
+        var form = "    <label for=\"template_name\">模板名称</label> \
+                        <input type=\"text\" class=\"form-control\" name=\"template_name\" id=\"template_name\" placeholder=\"请输入有效的模板名称 (必填)\"> \
+                        <label for=\"template_description\">模板描述</label> \
+                        <input type=\"text\" class=\"form-control\" name=\"template_description\" id=\"template_description\" placeholder=\"请输入模板描述 (选填)\"> \
                         <input id=\"domain\" name=\"domain\" type=\"hidden\" value=\""+domain+"\"> \
                     ";
         modal.find('.modal-body p').html(form);
@@ -290,14 +290,14 @@
                     aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">History Details</h4>
+                <h4 class="modal-title">历史详情</h4>
             </div>
             <div class="modal-body">
                 <pre><code id="modal-code-content"></code></pre>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-flat btn-default pull-right"
-                    data-dismiss="modal">Close</button>
+                    data-dismiss="modal">关闭</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -312,15 +312,15 @@
                     aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Clone to template</h4>
+                <h4 class="modal-title">克隆模板</h4>
             </div>
             <div class="modal-body">
                 <p></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-flat btn-default pull-left"
-                    id="button_close" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-flat btn-primary" id="button_save">Save</button>
+                    id="button_close" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-flat btn-primary" id="button_save">保存</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -343,7 +343,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-flat btn-default pull-right"
-                    data-dismiss="modal">Close</button>
+                    data-dismiss="modal">关闭</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -359,17 +359,17 @@
                     aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Sync domains from nameserver</h4>
+                <h4 class="modal-title">从域名服务器同步域名</h4>
             </div>
             <div class="modal-body">
 
                 <div class="overlay">
-                  <div id="modal_bg_reload_content"><i class="fa fa-refresh fa-spin"></i> Update in progress ..</div>
+                  <div id="modal_bg_reload_content"><i class="fa fa-refresh fa-spin"></i> 正在更新 ..</div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-flat btn-default pull-right"
-                    data-dismiss="modal">Close</button>
+                    data-dismiss="modal">关闭</button>
             </div>
         </div>
         <!-- /.modal-content -->

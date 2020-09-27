@@ -4,12 +4,12 @@
 {% block dashboard_stat %}
 <section class="content-header">
     <h1>
-        Manage domain: <b>{{ domain.name }}</b>
+        域名管理: <b>{{ domain.name }}</b>
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ url_for('dashboard.dashboard') }}"><i
                 class="fa fa-dashboard"></i> Home</a></li>
-        <li>Domain</li>
+        <li>域名</li>
         <li class="active">{{ domain.name }}</li>
     </ol>
 </section>
@@ -23,10 +23,10 @@
                 <div class="box-body">
                     {% if domain.type != 'Slave' %}
                     <button type="button" class="btn btn-flat btn-primary pull-left button_add_record" id="{{ domain.name }}">
-                        Add Record&nbsp;<i class="fa fa-plus"></i>
+                        添加记录&nbsp;<i class="fa fa-plus"></i>
                     </button>
                     <button type="button" class="btn btn-flat btn-primary pull-right button_apply_changes" id="{{ domain.name }}" value="{{ domain.serial }}">
-                        Apply Changes&nbsp;<i class="fa fa-floppy-o"></i>
+                        应用变更&nbsp;<i class="fa fa-floppy-o"></i>
                     </button>
                     {% else %}
                     <button type="button" class="btn btn-flat btn-primary pull-left button_update_from_master" id="{{ domain.name }}">
@@ -38,14 +38,14 @@
                     <table id="tbl_records" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Type</th>
-                                <th>Status</th>
+                                <th>名称</th>
+                                <th>类型</th>
+                                <th>状态</th>
                                 <th>TTL</th>
-                                <th>Data</th>
-                                <th>Comment</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>日期</th>
+                                <th>注释</th>
+                                <th>编辑</th>
+                                <th>删除</th>
                             </tr>
                         </thead>
                         <tbody>
