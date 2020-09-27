@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-{% block title %}<title>My Profile - {{ SITE_NAME }}</title>{% endblock %}
+{% block title %}<title>个人信息 - {{ SITE_NAME }}</title>{% endblock %}
 {% block dashboard_stat %}
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Profile
-        <small>Edit my profile</small>
+        个人信息
+        <small>修改个人信息</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{{ url_for('dashboard.dashboard') }}"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li class="active">My Profile</li>
+        <li><a href="{{ url_for('dashboard.dashboard') }}"><i class="fa fa-dashboard"></i>首页</a></li>
+        <li class="active">个人信息</li>
     </ol>
 </section>
 {% endblock %}
@@ -19,20 +19,19 @@
         <div class="col-lg-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Edit my profile{%  if session['authentication_type'] != 'LOCAL' %} [Disabled -
+                    <h3 class="box-title">修改个人信息{%  if session['authentication_type'] != 'LOCAL' %} [Disabled -
                         Authenticated externally]{% endif %}</h3>
                 </div>
                 <div class="box-body">
                     <!-- Custom Tabs -->
                     <div class="nav-tabs-custom" id="tabs">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tabs-personal" data-toggle="tab">Personal
-                                    Info</a></li>
+                            <li class="active"><a href="#tabs-personal" data-toggle="tab">个人信息</a></li>
                             {%  if session['authentication_type'] == 'LOCAL' %}
-                            <li><a href="#tabs-password" data-toggle="tab">Change Password</a></li>
+                            <li><a href="#tabs-password" data-toggle="tab">修改密码</a></li>
                             {% endif %}
                             {%  if session['authentication_type'] in ['LOCAL', 'LDAP'] %}
-                            <li><a href="#tabs-authentication" data-toggle="tab">Authentication</a></li>
+                            <li><a href="#tabs-authentication" data-toggle="tab">身份验证</a></li>
                             {% endif %}
                         </ul>
                         <div class="tab-content">
@@ -40,13 +39,13 @@
                                 <form role="form" method="post" action="{{ user_profile }}">
                                     <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
-                                        <label for="firstname">First Name</label> <input type="text"
+                                        <label for="firstname">名字</label> <input type="text"
                                             class="form-control" name="firstname" id="firstname"
                                             placeholder="{{ current_user.firstname }}"
                                             {%  if session['authentication_type'] != 'LOCAL' %}disabled{% endif %}>
                                     </div>
                                     <div class="form-group">
-                                        <label for="lastname">Last Name</label> <input type="text" class="form-control"
+                                        <label for="lastname">姓氏</label> <input type="text" class="form-control"
                                             name="lastname" id="lastname" placeholder="{{ current_user.lastname }}"
                                             {%  if session['authentication_type'] != 'LOCAL' %}disabled{% endif %}>
                                     </div>
@@ -56,7 +55,7 @@
                                             {%  if session['authentication_type'] != 'LOCAL' %}disabled{% endif %}>
                                     </div>{%  if session['authentication_type'] == 'LOCAL' %}
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-flat btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-flat btn-primary">提交</button>
                                     </div>{% endif %}
                                 </form>
                             </div>
@@ -68,15 +67,15 @@
                                 <form action="{{ user_profile }}" method="post">
                                     <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
-                                        <label for="password">New Password</label> <input type="password"
+                                        <label for="password">新密码</label> <input type="password"
                                             class="form-control" name="password" id="newpassword" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="rpassword">Re-type New Password</label> <input type="password"
+                                        <label for="rpassword">再次输入密码</label> <input type="password"
                                             class="form-control" name="rpassword" id="rpassword" />
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-flat btn-primary">Change Password</button>
+                                        <button type="submit" class="btn btn-flat btn-primary">修改密码</button>
                                     </div>
                                 </form>
                                 {% endif %}
@@ -89,11 +88,11 @@
                                     <div class="form-group">
                                         <input type="checkbox" id="otp_toggle" class="otp_toggle"
                                             {% if current_user.otp_secret %}checked{% endif %}>
-                                        <label for="otp_toggle">Enable Two Factor Authentication</label>
+                                        <label for="otp_toggle">开启两步身份验证</label>
                                         {% if current_user.otp_secret %}
                                         <div id="token_information">
                                             <p><img id="qrcode" src="{{ url_for('user.qrcode') }}"></p>
-                                            You can use Google Authenticator (<a target="_blank"
+                                            可以使用谷歌验证 (<a target="_blank"
                                                 href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2">Android</a>
                                             - <a target="_blank"
                                                 href="https://apps.apple.com/us/app/google-authenticator/id388497605">iOS</a>)
@@ -101,10 +100,9 @@
                                                 href="https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp&hl=en">Android</a>
                                             - <a target="_blank"
                                                 href="https://itunes.apple.com/en/app/freeotp-authenticator/id872559395?mt=8">iOS</a>)
-                                            on your smartphone to scan the QR code.
+                                            用你的手机扫描二维码.
                                             <br />
-                                            <font color="red"><strong><i>Make sure only you can see this QR Code and
-                                                        nobody can capture it.</i></strong></font>
+                                            <font color="red"><strong><i>确定只有你可以看到这个二维码并且没人可以截图.</i></strong></font>
                                         </div>
                                         {% endif %}
                                     </div>
