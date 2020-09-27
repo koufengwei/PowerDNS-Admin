@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 {% set active_page = "admin_users" %}
-{% block title %}<title>Edit User - {{ SITE_NAME }}</title>{% endblock %}
+{% block title %}<title>用户编辑 - {{ SITE_NAME }}</title>{% endblock %}
 
 {% block dashboard_stat %}
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
         User
-        <small>{% if create %}New user{% else %}{{ user.username }}{% endif %}</small>
+        <small>{% if create %}创建新用户{% else %}{{ user.username }}{% endif %}</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{{ url_for('dashboard.dashboard') }}"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li><a href="{{ url_for('admin.manage_user') }}">User</a></li>
-        <li class="active">{% if create %}Add{% else %}Edit{% endif %} user</li>
+        <li><a href="{{ url_for('dashboard.dashboard') }}"><i class="fa fa-dashboard"></i>首页</a></li>
+        <li><a href="{{ url_for('admin.manage_user') }}">用户</a></li>
+        <li class="active">{% if create %}新建{% else %}编辑{% endif %} 用户</li>
     </ol>
 </section>
 {% endblock %}
@@ -23,7 +23,7 @@
         <div class="col-md-4">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">{% if create %}Add{% else %}Edit{% endif %} user</h3>
+                    <h3 class="box-title">{% if create %}新建{% else %}编辑{% endif %} 用户</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
@@ -35,50 +35,50 @@
                         {% if error %}
                         <div class="alert alert-danger alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <h4><i class="icon fa fa-ban"></i> Error!</h4>
+                            <h4><i class="icon fa fa-ban"></i> 出错了!</h4>
                             {{ error }}
                         </div>
                         <span class="help-block">{{ error }}</span>
                         {% endif %}
                         <div class="form-group has-feedback">
-                            <label class="control-label" for="firstname">First Name</label>
+                            <label class="control-label" for="firstname">名字</label>
                             <input type="text" class="form-control" placeholder="First Name" name="firstname"
                                 {% if user %}value="{{ user.firstname }}" {% endif %}> <span
                                 class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                         <div class="form-group has-feedback">
-                            <label class="control-label" for="lastname">Last Name</label>
+                            <label class="control-label" for="lastname">姓氏</label>
                             <input type="text" class="form-control" placeholder="Last name" name="lastname"
                                 {% if user %}value="{{ user.lastname }}" {% endif %}> <span
                                 class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                         <div class="form-group has-feedback">
-                            <label class="control-label" for="email">E-mail address</label>
+                            <label class="control-label" for="email">E-mail 地址</label>
                             <input type="email" class="form-control" placeholder="Email" name="email" id="email"
                                 {% if user %}value="{{ user.email }}" {% endif %}> <span
                                 class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         </div>
-                        <p class="login-box-msg">Enter the account details below</p>
+                        <p class="login-box-msg">输入账户详情</p>
                         <div class="form-group has-feedback">
-                            <label class="control-label" for="username">Username</label>
-                            <input type="text" class="form-control" placeholder="Username" name="username"
+                            <label class="control-label" for="username">用户名</label>
+                            <input type="text" class="form-control" placeholder="用户名" name="username"
                                 {% if user %}value="{{ user.username }}" {% endif %}
                                 {% if not create %}disabled{% endif %}> <span
                                 class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
                         <div class="form-group has-feedback {% if blank_password %}has-error{% endif %}">
-                            <label class="control-label" for="username">Password</label>
+                            <label class="control-label" for="username">密码</label>
                             <input type="password" class="form-control"
-                                placeholder="Password {% if create %}(Required){% else %}(Leave blank to keep unchanged){% endif %}"
+                                placeholder="密码 {% if create %}(必填){% else %}(如不修改保持空白){% endif %}"
                                 name="password"> <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                             {% if blank_password %}
-                            <span class="help-block">The password cannot be blank.</span>
+                            <span class="help-block">密码不能为空.</span>
                             {% endif %}
                         </div>
                     </div>
                     <div class="box-footer">
                         <button type="submit"
-                            class="btn btn-flat btn-primary">{% if create %}Create{% else %}Update{% endif %}
+                            class="btn btn-flat btn-primary">{% if create %}创建{% else %}更新{% endif %}
                             User</button>
                     </div>
                 </form>
@@ -86,7 +86,7 @@
             {% if not create %}
             <div class="box box-secondary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Two Factor Authentication</h3>
+                    <h3 class="box-title">两步身份验证</h3>
                 </div>
                 <div class="box-body">
                     <p>If two factor authentication was configured and is causing problems due to a lost device or
@@ -96,7 +96,7 @@
                 </div>
                 <div class="box-footer">
                     <button type="button" class="btn btn-flat btn-warning button_otp_disable" id="{{ user.username }}"
-                        {% if not user.otp_secret %}disabled{% endif %}>Disable Two Factor Authentication</button>
+                        {% if not user.otp_secret %}disabled{% endif %}>禁用两步身份验证</button>
                 </div>
             </div>
             {% endif %}
@@ -104,17 +104,17 @@
         <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Help with {% if create %}creating a new{% else%}updating a{% endif %} user
+                    <h3 class="box-title">{% if create %}创建{% else%}修改{% endif %} 用户
                     </h3>
                 </div>
                 <div class="box-body">
-                    <p>Fill in all the fields to the in the form to the left.</p>
+                    <p>在左侧的表格中填写所有字段.</p>
                     {% if create %}
-                    <p><strong>Newly created users do not have access to any domains.</strong> You will need to grant
-                        access to the user once it is created via the domain management buttons on the dashboard.</p>
+                    <p><strong>新创建的用户没有访问任何域名的权限.</strong> 您将需要授予
+                        通过仪表板上的域管理按钮创建用户后，即可对其进行访问.</p>
                     {% else %}
-                    <p><strong>Password</strong> can be left empty to keep the current password.</p>
-                    <p><strong>Username</strong> cannot be changed.</p>
+                    <p><strong>密码</strong> 使用当前密码请保持为空.</p>
+                    <p><strong>用户名</strong> 不可修改.</p>
                     {% endif %}
                 </div>
             </div>
@@ -128,7 +128,7 @@
     $(document.body).on('click', '.button_otp_disable', function () {
         var modal = $("#modal_otp_disable");
         var username = $(this).prop('id');
-        var info = "Are you sure you want to disable two factor authentication for user " + username + "?";
+        var info = "确定要禁用两步验证-- " + username + "?";
         modal.find('.modal-body p').text(info);
         modal.find('#button_otp_disable_confirm').click(function () {
             var postdata = {
@@ -150,15 +150,14 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Confirmation</h4>
+                <h4 class="modal-title">确认</h4>
             </div>
             <div class="modal-body">
                 <p></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-flat btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-flat btn-danger" id="button_otp_disable_confirm">Disable Two Factor
-                    Authentication</button>
+                <button type="button" class="btn btn-flat btn-default pull-left" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-flat btn-danger" id="button_otp_disable_confirm">禁用两步身份验证</button>
             </div>
         </div>
     </div>
