@@ -39,15 +39,15 @@
     <!-- Logo -->
     <a href="{{ url_for('index.index') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>PD</b>A</span>
+      <span class="logo-mini"><b>YM</b>GL</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PowerDNS</b>-Admin</span>
+      <span class="logo-lg"><b>域名管理后台</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
+        <span class="sr-only">切换导航栏</span>
       </a>
 
       <div class="navbar-custom-menu">
@@ -73,10 +73,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="{{ url_for('user.profile') }}" class="btn btn-flat btn-primary">My Profile</a>
+                  <a href="{{ url_for('user.profile') }}" class="btn btn-flat btn-primary">个人信息</a>
                 </div>
                 <div class="pull-right">
-                  <a href="{{ url_for('index.logout') }}" class="btn btn-flat btn-warning">Log out</a>
+                  <a href="{{ url_for('index.logout') }}" class="btn btn-flat btn-warning">退出</a>
                 </div>
               </li>
             </ul>
@@ -98,53 +98,53 @@
         </div>
         <div class="pull-left info">
           <p>{{ current_user.firstname }} {{ current_user.lastname }}</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Logged In</a>
+          <a href="#"><i class="fa fa-circle text-success"></i> 登录</a>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">USER ACTIONS</li>
+        <li class="header">用户操作</li>
         <li class="{{ 'active' if active_page == 'dashboard' else '' }}">
-          <a href="{{ url_for('dashboard.dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+          <a href="{{ url_for('dashboard.dashboard') }}"><i class="fa fa-dashboard"></i> <span>概览</span></a>
         </li>
         {% if SETTING.get('allow_user_create_domain') or current_user.role.name in ['Administrator', 'Operator'] %}
         <li class="{{ 'active' if active_page == 'new_domain' else '' }}">
-          <a href="{{ url_for('domain.add') }}"><i class="fa fa-plus"></i> <span>New Domain</span></a>
+          <a href="{{ url_for('domain.add') }}"><i class="fa fa-plus"></i> <span>新建域名</span></a>
         </li>
         {% endif %}
         {% if current_user.role.name in ['Administrator', 'Operator'] %}
         <li class="header">ADMINISTRATION</li>
         <li class="{{ 'active' if active_page == 'admin_console' else '' }}">
-          <a href="{{ url_for('admin.pdns_stats') }}"><i class="fa fa-info-circle"></i> <span>PDNS</span></a>
+          <a href="{{ url_for('admin.pdns_stats') }}"><i class="fa fa-info-circle"></i> <span>系统设置</span></a>
         </li>
         <li class="{{ 'active' if active_page == 'admin_global_search' else '' }}">
-          <a href="{{ url_for('admin.global_search') }}"><i class="fa fa-search"></i> <span>Global Search</span></a>
+          <a href="{{ url_for('admin.global_search') }}"><i class="fa fa-search"></i> <span>全局搜索</span></a>
         </li>
         <li class="{{ 'active' if active_page == 'admin_history' else '' }}">
-          <a href="{{ url_for('admin.history') }}"><i class="fa fa-calendar"></i> <span>History</span></a>
+          <a href="{{ url_for('admin.history') }}"><i class="fa fa-calendar"></i> <span>历史记录</span></a>
         </li>
         <li class="{{ 'active' if active_page == 'admin_domain_template' else '' }}">
-          <a href="{{ url_for('admin.templates') }}"><i class="fa fa-clone"></i> <span>Domain Templates</span></a>
+          <a href="{{ url_for('admin.templates') }}"><i class="fa fa-clone"></i> <span>域名模板</span></a>
         </li>
         <li class="{{ 'active' if active_page == 'admin_accounts' else '' }}">
-          <a href="{{ url_for('admin.manage_account') }}"><i class="fa fa-industry"></i> <span>Accounts</span></a>
+          <a href="{{ url_for('admin.manage_account') }}"><i class="fa fa-industry"></i> <span>账户管理</span></a>
         </li>
         <li class="{{ 'active' if active_page == 'admin_users' else '' }}">
-          <a href="{{ url_for('admin.manage_user') }}"><i class="fa fa-users"></i> <span>Users</span></a>
+          <a href="{{ url_for('admin.manage_user') }}"><i class="fa fa-users"></i> <span>用户管理</span></a>
         </li>
         <li class="{{ 'treeview active' if active_page == 'admin_settings' else 'treeview' }}">
           <a href="#">
-            <i class="fa fa-cog"></i> <span>Settings</span>
+            <i class="fa fa-cog"></i> <span>设置</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu" {% if active_page == 'admin_settings' %}style="display: block;"{% endif %}>
-            <li><a href="{{ url_for('admin.setting_basic') }}"><i class="fa fa-circle-o"></i></i> <span>Basic</span></a></li>
-            <li><a href="{{ url_for('admin.setting_records') }}"><i class="fa fa-circle-o"></i> <span>Records</span></a></li>
+            <li><a href="{{ url_for('admin.setting_basic') }}"><i class="fa fa-circle-o"></i></i> <span>基本设置</span></a></li>
+            <li><a href="{{ url_for('admin.setting_records') }}"><i class="fa fa-circle-o"></i> <span>解析记录设置</span></a></li>
             {% if current_user.role.name == 'Administrator' %}
             <li><a href="{{ url_for('admin.setting_pdns') }}"><i class="fa fa-circle-o"></i> <span>PDNS</a></li>
-            <li><a href="{{ url_for('admin.setting_authentication') }}"><i class="fa fa-circle-o"></i> <span>Authentication</span></a></li>
+            <li><a href="{{ url_for('admin.setting_authentication') }}"><i class="fa fa-circle-o"></i> <span>身份认证</span></a></li>
             {% endif %}
           </ul>
         </li>
@@ -161,12 +161,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        概览
+        <small>控制台</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{ url_for('dashboard.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="{{ url_for('dashboard.dashboard') }}"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li class="active">概览</li>
       </ol>
     </section>
     {% endblock %}
@@ -175,7 +175,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong><a href="https://github.com/ngoduykhanh/PowerDNS-Admin">PowerDNS-Admin</a></strong> - A PowerDNS web interface with advanced features.
+    <strong><a href="https://www.baidu.com">域名管理后台</a></strong> - PowerDNS.
   </footer>
 </div>
 <!-- ./wrapper -->
@@ -294,14 +294,14 @@
           aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title">Error</h4>
+        <h4 class="modal-title">错误</h4>
       </div>
       <div class="modal-body">
         <p></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-flat btn-default pull-right"
-          data-dismiss="modal">Close</button>
+          data-dismiss="modal">关闭</button>
       </div>
     </div>
     <!-- /.modal-content -->
@@ -317,14 +317,14 @@
           aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title">Success</h4>
+        <h4 class="modal-title">成功</h4>
       </div>
       <div class="modal-body">
         <p></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-flat btn-default pull-right"
-          data-dismiss="modal">Close</button>
+          data-dismiss="modal">关闭</button>
       </div>
     </div>
     <!-- /.modal-content -->
@@ -337,18 +337,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Session timeout warning</h4>
+        <h4 class="modal-title">会话超时</h4>
       </div>
       <div class="modal-body">
-        <p>Your session is about to expire. You will be automatically signed out in</p>
+        <p>会话超时. 将自动跳转到登录页</p>
         <h3><span id="modal-time"></span></h3>
-        <p>To coninue your ssession, select <strong>Stay Signed In</strong></p>
+        <p>继续会话, 请选择 <strong>保持登录</strong></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-flat btn-danger pull-left button_stay_signed_in"
-          data-dismiss="modal">Stay Signed In</button>
+          data-dismiss="modal">保持登录</button>
         <button type="button" class="btn btn-flat btn-default pull-right button_sign_out"
-          data-dismiss="modal">Sign Out</button>
+          data-dismiss="modal">退出</button>
       </div>
     </div>
     <!-- /.session-warning-modal-content -->
