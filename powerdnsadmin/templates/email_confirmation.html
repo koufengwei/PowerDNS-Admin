@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Email confirmation - {{ SITE_NAME }}</title>
+  <title>邮件确认 - {{ SITE_NAME }}</title>
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -20,24 +20,24 @@
             <div class="error-content">
                 {% if status == 1 %}
                 <h3>
-                    <i class="fa fa-thumbs-o-up text-success"></i> Email verification successful!
+                    <i class="fa fa-thumbs-o-up text-success"></i> 邮件验证成功!
                 </h3>
                 <p>
-                  You have confirmed your account. <a href="{{ url_for('index.login') }}">Click here</a> to login.
+                  已经验证账户. <a href="{{ url_for('index.login') }}">点这里</a> 登录.
                 </p>
                 {% elif status == 2 %}
                 <h3>
-                  <i class="fa fa-hand-stop-o text-info"></i> Already verified!
+                  <i class="fa fa-hand-stop-o text-info"></i> 已经验证!
                 </h3>
                 <p>
-                  You have confirmed your account already. <a href="{{ url_for('index.login') }}">Click here</a> to login.
+                  已经验证账户. <a href="{{ url_for('index.login') }}">点这里</a> 登录.
                 </p>
                 {% else %}
                 <h3>
-                  <i class="fa fa-warning text-yellow"></i> Email verification failed!
+                  <i class="fa fa-warning text-yellow"></i> 邮件验证失败!
                 </h3>
                 <p>
-                  The confirmation link is invalid or has expired. <a href="{{ url_for('index.resend_confirmation_email') }}">Click here</a> if you want to resend a new link.
+                  验证链接无效或者过期. <a href="{{ url_for('index.resend_confirmation_email') }}">点这里</a> 发送新的链接.
                 </p>
                 {% endif %}
             </div>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Register - {{ SITE_NAME }}</title>
+  <title>注册 - {{ SITE_NAME }}</title>
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -23,7 +23,7 @@
 <body class="hold-transition register-page">
   <div class="register-box">
     <div class="register-logo">
-      <a href="{{ url_for('index.index') }}"><b>PowerDNS</b>-Admin</a>
+      <a href="{{ url_for('index.index') }}"><b>域名管理后台</b></a>
     </div>
     <div class="register-box-body">
       {% if error %}
@@ -32,51 +32,51 @@
         {{ error }}
       </div>
       {% endif %}
-      <p class="login-box-msg">Enter your personal details below</p>
+      <p class="login-box-msg">输入个人信息</p>
       <form action="{{ url_for('index.register') }}" method="post" data-toggle="validator">
         <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="First Name" name="firstname"
-            data-error="Please input your first name" required>
+          <input type="text" class="form-control" placeholder="名字" name="firstname"
+            data-error="请输入名字" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
           <span class="help-block with-errors"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Last name" name="lastname"
-            data-error="Please input your last name" required>
+          <input type="text" class="form-control" placeholder="姓氏" name="lastname"
+            data-error="请输入姓氏" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
           <span class="help-block with-errors"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="email" class="form-control" placeholder="Email" name="email"
-            data-error="Please input your valid email address" required>
+          <input type="email" class="form-control" placeholder="邮件" name="email"
+            data-error="请输入有效的邮件地址" required>
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           <span class="help-block with-errors"></span>
         </div>
         <p class="login-box-msg">Enter your account details below</p>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="Username" name="username"
-            data-error="Please input your username" required>
+          <input type="text" class="form-control" placeholder="用户名" name="username"
+            data-error="请输入用户名" required>
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
           <span class="help-block with-errors"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Password" id="password" name="password"
-            data-error="Please input your password" required>
+          <input type="password" class="form-control" placeholder="密码" id="password" name="password"
+            data-error="请输入密码" required>
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Retype password" name="rpassword"
-            data-match="#password" data-match-error="Password confirmation does not match" required>
+          <input type="password" class="form-control" placeholder="再次输入密码" name="rpassword"
+            data-match="#password" data-match-error="和上一行输入不一致" required>
           <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
           <span class="help-block with-errors"></span>
         </div>
         <div class="row">
           <div class="col-xs-4 pull-left">
-            <button type="button" class="btn btn-flat btn-block" id="button_back">Back</button>
+            <button type="button" class="btn btn-flat btn-block" id="button_back">返回</button>
           </div>
           <div class="col-xs-4 pull-right">
-            <button type="submit" class="btn btn-flat btn-primary btn-block">Register</button>
+            <button type="submit" class="btn btn-flat btn-primary btn-block">注册</button>
           </div>
           <!-- /.col -->
         </div>
@@ -85,7 +85,7 @@
     <!-- /.form-box -->
     <div class="login-box-footer">
       <center>
-        <p>Powered by <a href="https://github.com/ngoduykhanh/PowerDNS-Admin">PowerDNS-Admin</a></p>
+        <p>Powered by <a href="https://github.com/ngoduykhanh/PowerDNS-Admin">开心域名管理后台</a></p>
       </center>
     </div>
   </div>
