@@ -6,11 +6,11 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Settings <small>PowerDNS-Admin settings</small>
+        设置 <small>PowerDNS 设置</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{{ url_for('dashboard.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Setting</a></li>
+        <li><a href="{{ url_for('dashboard.dashboard') }}"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a href="#">设置</a></li>
         <li class="active">PDNS</li>
     </ol>
 </section>
@@ -21,7 +21,7 @@
         <div class="col-md-4">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">PDNS Settings</h3>
+                    <h3 class="box-title">PDNS 设置</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
@@ -31,8 +31,8 @@
                         {% if not SETTING.get('pdns_api_url') or not SETTING.get('pdns_api_key') or not SETTING.get('pdns_version') %}
                         <div class="alert alert-danger alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <h4><i class="icon fa fa-ban"></i> Error!</h4>
-                            Please complete your PowerDNS API configuration before continuing
+                            <h4><i class="icon fa fa-ban"></i> 出错了!</h4>
+                            请先完成 PowerDNS API 设置
                         </div>
                         {% endif %}
                         <div class="form-group has-feedback">
@@ -49,14 +49,14 @@
                             <span class="help-block with-errors"></span>
                         </div>
                         <div class="form-group has-feedback">
-                            <label class="control-label" for="pdns_version">PDNS VERSION</label>
+                            <label class="control-label" for="pdns_version">PDNS 版本</label>
                             <input type="text" class="form-control" placeholder="PowerDNS version" name="pdns_version"
                                 data-error="Please input PowerDNS version" required value="{{ pdns_version }}">
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-flat btn-primary">Update</button>
+                        <button type="submit" class="btn btn-flat btn-primary">更新</button>
                     </div>
                 </form>
             </div>
@@ -64,20 +64,20 @@
         <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Help</h3>
+                    <h3 class="box-title">帮助</h3>
                 </div>
                 <div class="box-body">
                     <dl class="dl-horizontal">
                         <p>You must configure the API connection information before PowerDNS-Admin can query your
                             PowerDNS data. Following fields are required:</p>
                         <dt>PDNS API URL</dt>
-                        <dd>Your PowerDNS API URL (eg. http://127.0.0.1:8081/).</dd>
+                        <dd>PowerDNS 的 API URL (例: http://127.0.0.1:8081/).</dd>
                         <dt>PDNS API KEY</dt>
-                        <dd>Your PowerDNS API key.</dd>
-                        <dt>PDNS VERSION</dt>
-                        <dd>Your PowerDNS version number (eg. 4.1.1).</dd>
+                        <dd>后台设置的PowerDNS API key.</dd>
+                        <dt>PDNS 版本</dt>
+                        <dd>当前 PowerDNS 版本号 (例. 4.1.1).</dd>
                     </dl>
-                    <p>Find more details at <a
+                    <p>更多信息可以到官网查看 <a
                             href="https://doc.powerdns.com/md/httpapi/README/">https://doc.powerdns.com/md/httpapi/README/</a>
                     </p>
                 </div>

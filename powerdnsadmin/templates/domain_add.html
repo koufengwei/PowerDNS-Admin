@@ -6,13 +6,13 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Domain
-        <small>Create new</small>
+        域名
+        <small>创建</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{{ url_for('dashboard.dashboard') }}"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li><a href="{{ url_for('dashboard.dashboard') }}">Domain</a></li>
-        <li class="active">Add Domain</li>
+        <li><a href="{{ url_for('dashboard.dashboard') }}"><i class="fa fa-dashboard"></i>首页</a></li>
+        <li><a href="{{ url_for('dashboard.dashboard') }}">域名</a></li>
+        <li class="active">添加域名</li>
     </ol>
 </section>
 {% endblock %}
@@ -23,7 +23,7 @@
         <div class="col-md-4">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Create new domain</h3>
+                    <h3 class="box-title">添加域名</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
@@ -32,35 +32,35 @@
                     <div class="box-body">
                         <div class="form-group">
                             <input type="text" class="form-control" name="domain_name" id="domain_name"
-                                placeholder="Enter a valid domain name (required)">
+                                placeholder="输入有效域名 (必填)">
                         </div>
                         <select name="accountid" class="form-control" style="width:15em;">
-                            <option value="0">- No Account -</option>
+                            <option value="0">- 无账号绑定 -</option>
                             {% for account in accounts %}
                             <option value="{{ account.id }}">{{ account.name }}</option>
                             {% endfor %}
                         </select><br />
                         <div class="form-group">
-                            <label>Type</label>
+                            <label>类型</label>
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="radio_type" id="radio_type_native" value="native" checked>
-                                    Native
+                                    本地
                                 </label>
                                 &nbsp;&nbsp;&nbsp;
                                 <label>
-                                    <input type="radio" name="radio_type" id="radio_type_master" value="master"> Master
+                                    <input type="radio" name="radio_type" id="radio_type_master" value="master"> 主
                                 </label>
                                 &nbsp;&nbsp;&nbsp;
                                 <label>
-                                    <input type="radio" name="radio_type" id="radio_type_slave" value="slave">Slave
+                                    <input type="radio" name="radio_type" id="radio_type_slave" value="slave">从
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Select a template</label>
+                            <label>选择模板</label>
                             <select class="form-control" id="domain_template" name="domain_template">
-                                <option value="0">No template</option>
+                                <option value="0">无</option>
                                 {% for template in templates %}
                                 <option value="{{ template.id }}">{{ template.name }}</option>
                                 {% endfor %}
@@ -72,28 +72,28 @@
                                 placeholder="Enter valid master ip addresses (separated by commas)">
                         </div>
                         <div class="form-group">
-                            <label>SOA-EDIT-API</label>
+                            <label>SOA-EDIT-API(起始授权机构Api编辑)</label>
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="radio_type_soa_edit_api" id="radio_default"
-                                        value="DEFAULT" checked> DEFAULT
+                                        value="DEFAULT" checked> 默认
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="radio_type_soa_edit_api" id="radio_increase"
-                                        value="INCREASE"> INCREASE
+                                        value="INCREASE"> 递增
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="radio_type_soa_edit_api" id="radio_epoch" value="EPOCH">
-                                    EPOCH
+                                    EPOCH(周期)
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="radio_type_soa_edit_api" id="radio_off" value="OFF"> OFF
+                                    <input type="radio" name="radio_type_soa_edit_api" id="radio_off" value="OFF"> 关闭
                                 </label>
                             </div>
                         </div>
@@ -101,9 +101,9 @@
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-flat btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-flat btn-primary">提交</button>
                         <button type="button" class="btn btn-flat btn-default"
-                            onclick="window.location.href='{{ url_for('dashboard.dashboard') }}'">Cancel</button>
+                            onclick="window.location.href='{{ url_for('dashboard.dashboard') }}'">取消</button>
                     </div>
                 </form>
             </div>
