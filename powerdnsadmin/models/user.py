@@ -423,12 +423,12 @@ class User(db.Model):
         # check if username existed
         user = User.query.filter(User.username == self.username).first()
         if user:
-            return {'status': False, 'msg': 'Username is already in use'}
+            return {'status': False, 'msg': '用户名已存在'}
 
         # check if email existed
         user = User.query.filter(User.email == self.email).first()
         if user:
-            return {'status': False, 'msg': 'Email address is already in use'}
+            return {'status': False, 'msg': '邮件地址已存在'}
 
         # first register user will be in Administrator role
         self.role_id = Role.query.filter_by(name='User').first().id
@@ -444,7 +444,7 @@ class User(db.Model):
 
         db.session.add(self)
         db.session.commit()
-        return {'status': True, 'msg': 'Created user successfully'}
+        return {'status': True, 'msg': '创建用户成功'}
 
     def update_local_user(self):
         """
@@ -452,12 +452,12 @@ class User(db.Model):
         """
         # Sanity check - account name
         if self.username == "":
-            return {'status': False, 'msg': 'No user name specified'}
+            return {'status': False, 'msg': '没有填写用户名'}
 
         # read user and check that it exists
         user = User.query.filter(User.username == self.username).first()
         if not user:
-            return {'status': False, 'msg': 'User does not exist'}
+            return {'status': False, 'msg': '用户不存在'}
 
         # check if new email exists (only if changed)
         if user.email != self.email:
@@ -465,7 +465,7 @@ class User(db.Model):
             if checkuser:
                 return {
                     'status': False,
-                    'msg': 'New email address is already in use'
+                    'msg': '新邮件地址已存在'
                 }
 
         user.firstname = self.firstname
@@ -478,7 +478,7 @@ class User(db.Model):
                 self.plain_text_password).decode("utf-8")
 
         db.session.commit()
-        return {'status': True, 'msg': 'User updated successfully'}
+        return {'status': True, 'msg': '用户更新成功'}
 
     def update_profile(self, enable_otp=None):
         """
@@ -556,7 +556,7 @@ class User(db.Model):
             return True
         except Exception as e:
             db.session.rollback()
-            current_app.logger.error('Cannot delete user {0} from DB. DETAIL: {1}'.format(
+            current_app.logger.error('无法从数据库中删除用户 {0} . 详细: {1}'.format(
                 self.username, e))
             return False
 
@@ -575,7 +575,7 @@ class User(db.Model):
             except Exception as e:
                 db.session.rollback()
                 current_app.logger.error(
-                    'Cannot revoke user {0} privileges. DETAIL: {1}'.format(
+                    '无法移除用户 {0} 的权限. 详细: {1}'.format(
                         self.username, e))
                 return False
         return False
@@ -586,6 +586,6 @@ class User(db.Model):
             user = User.query.filter(User.username == self.username).first()
             user.role_id = role.id
             db.session.commit()
-            return {'status': True, 'msg': 'Set user role successfully'}
+            return {'status': True, 'msg': '设置用户角色成功'}
         else:
-            return {'status': False, 'msg': 'Role does not exist'}
+            return {'status': False, 'msg': '角色不存在'}
