@@ -6,12 +6,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Templates
-    <small>List</small>
+    模板
+    <small>列表</small>
   </h1>
   <ol class="breadcrumb">
-    <li><a href="{{ url_for('admin.templates') }}"><i class="fa fa-dashboard"></i> Templates</a></li>
-    <li class="active">List</li>
+    <li><a href="{{ url_for('admin.templates') }}"><i class="fa fa-dashboard"></i> 模板</a></li>
+    <li class="active">列表</li>
   </ol>
 </section>
 {% endblock %}
@@ -24,7 +24,7 @@
       <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4>
-          <i class="icon fa fa-ban"></i> Error!
+          <i class="icon fa fa-ban"></i> 出错了!
         </h4>
         <div class="alert-message block-message error">
           <a class="close" href="#">x</a>
@@ -41,12 +41,12 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Templates</h3>
+          <h3 class="box-title">模板</h3>
         </div>
         <div class="box-body">
           <a href="{{ url_for('admin.create_template') }}">
             <button type="button" class="btn btn-flat btn-primary pull-left">
-              Create Template&nbsp;<i class="fa fa-plus"></i>
+              创建模板&nbsp;<i class="fa fa-plus"></i>
             </button>
           </a>
         </div>
@@ -54,10 +54,10 @@
           <table id="tbl_template_list" class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Number of Records</th>
-                <th width="20%">Action</th>
+                <th>名称</th>
+                <th>描述</th>
+                <th>解析记录数量</th>
+                <th width="20%">操作</th>
               </tr>
             </thead>
             <tbody>
@@ -76,11 +76,11 @@
                 <td>
                   <a href="{{ url_for('admin.edit_template', template=template.name) }}">
                     <button type="button" class="btn btn-flat btn-warning button_edit" id="btn_edit">
-                      Edit&nbsp;<i class="fa fa-edit"></i>
+                      编辑&nbsp;<i class="fa fa-edit"></i>
                     </button>
                   </a>
                   <button type="button" class="btn btn-flat btn-danger button_delete" id="{{template.name}}">
-                    Delete&nbsp;<i class="fa fa-trash"></i>
+                    删除&nbsp;<i class="fa fa-trash"></i>
                   </button>
                 </td>
               </tr>

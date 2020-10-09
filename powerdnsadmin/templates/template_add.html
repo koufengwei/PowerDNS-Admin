@@ -6,12 +6,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
-		Template
-		<small>Create</small>
+		模板
+		<small>创建</small>
 	</h1>
 	<ol class="breadcrumb">
-		<li><a href="{{ url_for('admin.templates') }}"><i class="fa fa-dashboard"></i> Templates</a></li>
-		<li class="active">Create</li>
+		<li><a href="{{ url_for('admin.templates') }}"><i class="fa fa-dashboard"></i> 模板</a></li>
+		<li class="active">创建</li>
 	</ol>
 </section>
 {% endblock %}
@@ -25,7 +25,7 @@ if errors %}
 			<div class="alert alert-danger alert-dismissible">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 				<h4>
-					<i class="icon fa fa-ban"></i> Error!
+					<i class="icon fa fa-ban"></i> 出错了!
 				</h4>
 				<div class="alert-message block-message error">
 					<a class="close" href="#">x</a>
@@ -43,7 +43,7 @@ if errors %}
 		<div class="col-md-4">
 			<div class="box box-primary">
 				<div class="box-header with-border">
-					<h3 class="box-title">Create new template</h3>
+					<h3 class="box-title">创建新模板</h3>
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
@@ -52,17 +52,17 @@ if errors %}
 					<div class="box-body">
 						<div class="form-group">
 							<input type="text" class="form-control" name="name" id="name"
-								placeholder="Enter a valid template name (required)">
+								placeholder="输入有效的模板名称 (必填)">
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control" name="description" id="description"
-								placeholder="Enter a template description (optional)">
+								placeholder="输入模板描述 (选填)">
 						</div>
 					</div>
 					<div class="box-footer">
-						<button type="submit" class="btn btn-flat btn-primary">Submit</button>
+						<button type="submit" class="btn btn-flat btn-primary">提交</button>
 						<button type="button" class="btn btn-flat btn-default"
-							onclick="window.location.href='{{ url_for('admin.templates') }}'">Cancel</button>
+							onclick="window.location.href='{{ url_for('admin.templates') }}'">取消</button>
 					</div>
 				</form>
 			</div>
@@ -71,17 +71,17 @@ if errors %}
 		<div class="col-md-8">
 			<div class="box box-primary">
 				<div class="box-header with-border">
-					<h3 class="box-title">Help with creating a new template</h3>
+					<h3 class="box-title">提示</h3>
 				</div>
 				<div class="box-body">
 					<dl class="dl-horizontal">
-						<dt>Template name</dt>
-						<dd>Enter your template name, this is the name of the template that
-							will be shown to users. The name should not have any spaces but
-							can have symbols.</dd>
-						<dt>Template description</dt>
-						<dd>Enter your template description, this is to help better
-							identify the template.</dd>
+						<dt>模板名称</dt>
+						<dd>输入您的模板名称，这是模板名称，
+							将显示给用户。 名称中不能有空格，但
+							可以有符号.</dd>
+						<dt>模板描述</dt>
+						<dd>输入您的模板描述，这是为了更好地帮助您
+							识别模板.</dd>
 					</dl>
 				</div>
 			</div>

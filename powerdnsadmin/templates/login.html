@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Log In - {{ SITE_NAME }}</title>
+  <title>登录 - {{ SITE_NAME }}</title>
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -52,7 +52,7 @@
         {% if SETTING.get('ldap_enabled') and SETTING.get('local_db_enabled') %}
         <div class="form-group">
           <select class="form-control" name="auth_method">
-            <option value="LOCAL">LOCAL Authentication</option>
+            <option value="LOCAL">本地身份验证</option>
             {% if SETTING.get('login_ldap_first') %}
             <option value="LDAP" selected="selected">LDAP Authentication</option>
             {% else %}

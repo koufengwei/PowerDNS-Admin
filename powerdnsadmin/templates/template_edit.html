@@ -5,12 +5,12 @@
 {% block dashboard_stat %}
 <section class="content-header">
     <h1>
-        Edit template <small>{{ template }}</small>
+        编辑模板 <small>{{ template }}</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ url_for('dashboard.dashboard') }}"><i
-                class="fa fa-dashboard"></i> Home</a></li>
-        <li>Templates</li>
+                class="fa fa-dashboard"></i> 首页</a></li>
+        <li>模板</li>
         <li class="active">{{ template }}</li>
     </ol>
 </section>
@@ -22,28 +22,28 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Manage Template Records for {{ template }}</h3>
+                    <h3 class="box-title">管理以下内容的模板解析记录 {{ template }}</h3>
                 </div>
                 <div class="box-body">
                     <button type="button" class="btn btn-flat btn-primary pull-left button_add_record" id="{{ template }}">
-                        Add Record&nbsp;<i class="fa fa-plus"></i>
+                        添加解析记录&nbsp;<i class="fa fa-plus"></i>
                     </button>
                     <button type="button" class="btn btn-flat btn-primary pull-right button_apply_changes" id="{{ template }}">
-                        Apply Changes&nbsp;<i class="fa fa-floppy-o"></i>
+                        应用修改&nbsp;<i class="fa fa-floppy-o"></i>
                     </button>
                 </div>
                 <div class="box-body">
                     <table id="tbl_records" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Type</th>
-                                <th>Status</th>
+                                <th>名称</th>
+                                <th>类型</th>
+                                <th>状态</th>
                                 <th>TTL</th>
-                                <th>Data</th>
-                                <th>Comment</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>值</th>
+                                <th>备注</th>
+                                <th>编辑</th>
+                                <th>删除</th>
                                 <th>ID</th>
                             </tr>
                         </thead>
@@ -70,12 +70,12 @@
                                     </td>
                                     <td width="6%">
                                          <button type="button" class="btn btn-flat btn-warning button_edit">
-                                            Edit&nbsp;<i class="fa fa-edit"></i>
+                                            编辑&nbsp;<i class="fa fa-edit"></i>
                                         </button>
                                     </td>
                                     <td width="6%">
                                         <button type="button" class="btn btn-flat btn-danger button_delete">
-                                            Delete&nbsp;<i class="fa fa-trash"></i>
+                                            删除&nbsp;<i class="fa fa-trash"></i>
                                         </button>
                                     </td>
                                     <td>
@@ -423,15 +423,15 @@
                     aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Confirmation</h4>
+                <h4 class="modal-title">确认</h4>
             </div>
             <div class="modal-body">
                 <p></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-flat btn-default pull-left" id="button_delete_cancel"
-                    data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-flat btn-danger" id="button_delete_confirm">Delete</button>
+                    data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-flat btn-danger" id="button_delete_confirm">删除</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -446,15 +446,15 @@
                     aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Confirmation</h4>
+                <h4 class="modal-title">确认</h4>
             </div>
             <div class="modal-body">
                 <p></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-flat btn-default pull-left"
-                    data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-flat btn-primary" id="button_apply_confirm">Apply</button>
+                    data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-flat btn-primary" id="button_apply_confirm">应用</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -469,13 +469,13 @@
                     aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Custom Record</h4>
+                <h4 class="modal-title">自定义记录</h4>
             </div>
             <div class="modal-body">
                 <p></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-flat btn-primary" id="button_save">Save</button>
+                <button type="button" class="btn btn-flat btn-primary" id="button_save">保存</button>
             </div>
         </div>
         <!-- /.modal-content -->
