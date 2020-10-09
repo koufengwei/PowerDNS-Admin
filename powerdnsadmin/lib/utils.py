@@ -135,10 +135,10 @@ def display_time(amount, units='s', remove_seconds=True):
                  (lambda seconds: divmod(seconds, 60), 's'),
                  (lambda minutes: divmod(minutes, 60), 'm'),
                  (lambda hours: divmod(hours, 24), 'h'),
-                 (lambda days: divmod(days, 7), 'D'),
+                 (lambda days: divmod(days, 7), '天'),
                  (lambda weeks: divmod(weeks, 4), '周'),
-                 (lambda years: divmod(years, 12), 'M'),
-                 (lambda decades: divmod(decades, 10), 'Y')]
+                 (lambda years: divmod(years, 12), '月'),
+                 (lambda decades: divmod(decades, 10), '年')]
 
     for index_start, (interval, unit) in enumerate(INTERVALS):
         if unit == units:
