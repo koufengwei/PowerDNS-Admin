@@ -131,14 +131,14 @@ def display_time(amount, units='s', remove_seconds=True):
     Convert timestamp to normal time format
     """
     amount = int(amount)
-    INTERVALS = [(lambda mlsec: divmod(mlsec, 1000), '毫秒'),
-                 (lambda seconds: divmod(seconds, 60), '秒'),
-                 (lambda minutes: divmod(minutes, 60), '分'),
-                 (lambda hours: divmod(hours, 24), '小时'),
-                 (lambda days: divmod(days, 7), '天'),
+    INTERVALS = [(lambda mlsec: divmod(mlsec, 1000), 'ms'),
+                 (lambda seconds: divmod(seconds, 60), 's'),
+                 (lambda minutes: divmod(minutes, 60), 'm'),
+                 (lambda hours: divmod(hours, 24), 'h'),
+                 (lambda days: divmod(days, 7), 'D'),
                  (lambda weeks: divmod(weeks, 4), '周'),
-                 (lambda years: divmod(years, 12), '月'),
-                 (lambda decades: divmod(decades, 10), '年')]
+                 (lambda years: divmod(years, 12), 'M'),
+                 (lambda decades: divmod(decades, 10), 'Y')]
 
     for index_start, (interval, unit) in enumerate(INTERVALS):
         if unit == units:
