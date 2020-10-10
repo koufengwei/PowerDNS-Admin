@@ -131,10 +131,10 @@ def display_time(amount, units='s', remove_seconds=True):
     Convert timestamp to normal time format
     """
     amount = int(amount)
-    INTERVALS = [(lambda mlsec: divmod(mlsec, 1000), '毫秒'),
-                 (lambda seconds: divmod(seconds, 60), '秒'),
-                 (lambda minutes: divmod(minutes, 60), '分'),
-                 (lambda hours: divmod(hours, 24), '时'),
+    INTERVALS = [(lambda mlsec: divmod(mlsec, 1000), 'ms'),
+                 (lambda seconds: divmod(seconds, 60), 's'),
+                 (lambda minutes: divmod(minutes, 60), 'm'),
+                 (lambda hours: divmod(hours, 24), 'h'),
                  (lambda days: divmod(days, 7), '天'),
                  (lambda weeks: divmod(weeks, 4), '周'),
                  (lambda years: divmod(years, 12), '月'),
@@ -161,7 +161,7 @@ def display_time(amount, units='s', remove_seconds=True):
     for amount, abrev in amount_abrev_partial:
         final_string += str(amount) + abrev + ' '
 
-    if remove_seconds and '分' in final_string:
+    if remove_seconds and 'm' in final_string:
         final_string = final_string[:final_string.rfind(' ')]
         return final_string[:final_string.rfind(' ')]
 

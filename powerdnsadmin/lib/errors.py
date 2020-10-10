@@ -21,7 +21,7 @@ class StructuredException(Exception):
 class DomainNotExists(StructuredException):
     status_code = 404
 
-    def __init__(self, name=None, message="Domain does not exist"):
+    def __init__(self, name=None, message="域名不存在"):
         StructuredException.__init__(self)
         self.message = message
         self.name = name
@@ -30,7 +30,7 @@ class DomainNotExists(StructuredException):
 class DomainAlreadyExists(StructuredException):
     status_code = 409
 
-    def __init__(self, name=None, message="Domain already exists"):
+    def __init__(self, name=None, message="域名已经存在"):
         StructuredException.__init__(self)
         self.message = message
         self.name = name
@@ -39,7 +39,7 @@ class DomainAlreadyExists(StructuredException):
 class DomainAccessForbidden(StructuredException):
     status_code = 403
 
-    def __init__(self, name=None, message="Domain access not allowed"):
+    def __init__(self, name=None, message="域名不允许访问"):
         StructuredException.__init__(self)
         self.message = message
         self.name = name
@@ -48,7 +48,7 @@ class DomainAccessForbidden(StructuredException):
 class ApiKeyCreateFail(StructuredException):
     status_code = 500
 
-    def __init__(self, name=None, message="Creation of api key failed"):
+    def __init__(self, name=None, message="创建ApiKey失败"):
         StructuredException.__init__(self)
         self.message = message
         self.name = name
@@ -69,7 +69,7 @@ class ApiKeyNotUsable(StructuredException):
 class NotEnoughPrivileges(StructuredException):
     status_code = 401
 
-    def __init__(self, name=None, message="Not enough privileges"):
+    def __init__(self, name=None, message="权限不够"):
         StructuredException.__init__(self)
         self.message = message
         self.name = name
@@ -78,7 +78,7 @@ class NotEnoughPrivileges(StructuredException):
 class RequestIsNotJSON(StructuredException):
     status_code = 400
 
-    def __init__(self, name=None, message="Request is not json"):
+    def __init__(self, name=None, message="请求不是json格式"):
         StructuredException.__init__(self)
         self.message = message
         self.name = name
@@ -87,7 +87,7 @@ class RequestIsNotJSON(StructuredException):
 class AccountCreateFail(StructuredException):
     status_code = 500
 
-    def __init__(self, name=None, message="Creation of account failed"):
+    def __init__(self, name=None, message="创建账号失败"):
         StructuredException.__init__(self)
         self.message = message
         self.name = name
@@ -96,7 +96,7 @@ class AccountCreateFail(StructuredException):
 class AccountUpdateFail(StructuredException):
     status_code = 500
 
-    def __init__(self, name=None, message="Update of account failed"):
+    def __init__(self, name=None, message="账号更新失败"):
         StructuredException.__init__(self)
         self.message = message
         self.name = name
@@ -105,7 +105,7 @@ class AccountUpdateFail(StructuredException):
 class AccountDeleteFail(StructuredException):
     status_code = 500
 
-    def __init__(self, name=None, message="Delete of account failed"):
+    def __init__(self, name=None, message="删除账号失败"):
         StructuredException.__init__(self)
         self.message = message
         self.name = name
@@ -114,7 +114,7 @@ class AccountDeleteFail(StructuredException):
 class UserCreateFail(StructuredException):
     status_code = 500
 
-    def __init__(self, name=None, message="Creation of user failed"):
+    def __init__(self, name=None, message="创建用户失败"):
         StructuredException.__init__(self)
         self.message = message
         self.name = name
@@ -123,7 +123,7 @@ class UserCreateFail(StructuredException):
 class UserUpdateFail(StructuredException):
     status_code = 500
 
-    def __init__(self, name=None, message="Update of user failed"):
+    def __init__(self, name=None, message="用户更新失败"):
         StructuredException.__init__(self)
         self.message = message
         self.name = name
@@ -132,7 +132,7 @@ class UserUpdateFail(StructuredException):
 class UserDeleteFail(StructuredException):
     status_code = 500
 
-    def __init__(self, name=None, message="Delete of user failed"):
+    def __init__(self, name=None, message="删除用户失败"):
         StructuredException.__init__(self)
         self.message = message
         self.name = name
