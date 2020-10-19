@@ -113,7 +113,7 @@
         </li>
         {% endif %}
         {% if current_user.role.name in ['Administrator', 'Operator'] %}
-        <li class="header">ADMINISTRATION</li>
+        <li class="header">管理员功能</li>
         <li class="{{ 'active' if active_page == 'admin_console' else '' }}">
           <!-- <a href="{{ url_for('admin.pdns_stats') }}"><i class="fa fa-info-circle"></i> <span>系统运行监控</span></a> -->
         </li>
