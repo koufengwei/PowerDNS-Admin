@@ -115,7 +115,7 @@
         {% if current_user.role.name in ['Administrator', 'Operator'] %}
         <li class="header">ADMINISTRATION</li>
         <li class="{{ 'active' if active_page == 'admin_console' else '' }}">
-          <a href="{{ url_for('admin.pdns_stats') }}"><i class="fa fa-info-circle"></i> <span>系统运行监控</span></a>
+          <!-- <a href="{{ url_for('admin.pdns_stats') }}"><i class="fa fa-info-circle"></i> <span>系统运行监控</span></a> -->
         </li>
         <li class="{{ 'active' if active_page == 'admin_global_search' else '' }}">
           <a href="{{ url_for('admin.global_search') }}"><i class="fa fa-search"></i> <span>全局搜索</span></a>
