@@ -17,11 +17,11 @@ def send_account_verification(user_email):
         subject = "Welcome to {}".format(Setting().get('site_name'))
         msg = Message(subject=subject)
         msg.recipients = [user_email]
-        msg.body = "Please access the following link verify your email address. {}".format(
+        msg.body = "请访问以下链接来确认邮件地址. {}".format(
             verification_link)
         msg.html = render_template('emails/account_verification.html',
                                 verification_link=verification_link)
         current_app.mail.send(msg)
     except Exception as e:
-        current_app.logger.error("Cannot send account verification email. Error: {}".format(e))
+        current_app.logger.error("无法发送账号确认邮件. Error: {}".format(e))
         current_app.logger.debug(traceback.format_exc())
